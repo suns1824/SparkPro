@@ -1,0 +1,1 @@
+需要一个build.xml配置文件，使用ant来对jibx做绑定

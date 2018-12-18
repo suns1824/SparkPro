@@ -7,6 +7,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * HBase操作工具类：Java工具类建议采用单例模式封装
@@ -41,14 +42,12 @@ public class HBaseUtils {
         return instance;
     }
 
-
     /**
      * 根据表名获取到HTable实例
      */
     public HTable getTable(String tableName) {
 
         HTable table = null;
-
         try {
             table = new HTable(configuration, tableName);
         } catch (IOException e) {

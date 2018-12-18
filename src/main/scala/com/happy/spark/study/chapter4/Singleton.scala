@@ -1,7 +1,5 @@
 package com.happy.spark.study.chapter4
 
-import com.happy.spark.study.chapter4.MarkerFactory.markers
-
 import scala.collection._
 
 class Marker private (val color: String) {
