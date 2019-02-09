@@ -1,4 +1,4 @@
-package com.happy.spark.sql
+package com.happy.spark.raysurf.sql
 import java.util.logging.{Level, Logger}
 
 import org.apache.spark.SparkContext
