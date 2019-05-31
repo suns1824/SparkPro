@@ -40,7 +40,7 @@ object StatStreamingApp {
 
       // infos(2) = "GET /class/130.html HTTP/1.1"
       // url = /class/130.html
-      val url = infos(2).split(" ")(1)
+      val url = infos(2).split(" ")(1 g6)
       var courseId = 0
 
       // 把实战课程的课程编号拿到了

@@ -37,12 +37,10 @@ object Movierec {
       //var usersData = spark.read.textFile("File:///usr/bigdata/data/ml-1w/users.csv").map(parseUserData _).cache()
       var ratingsData = spark.read.textFile("File:///usr/bigdata/data/ml-1w/ratings.csv").map(parseRatingData _).cache()
 
-      // convert to DataFrame
       val moviesDF = moviesData.toDF()
       //val usersDF = usersData.toDF()
       val ratingsDF = ratingsData.toDF()
 
-      // split to data set and test set
       val tempPartitions = ratingsData.randomSplit(Array(0.7, 0.3), 1024L)
       val trainingSetOfRatingsData = tempPartitions(0).cache().rdd
       val testSetOfRatingData = tempPartitions(1).cache().rdd
@@ -54,32 +52,6 @@ object Movierec {
       println(s"Recommend Movie to User ID 10")
       println(recomResult.mkString("\n"))
 
-//      val movieTitles = moviesDF.as[(Int, String)].rdd.collectAsMap()
-//
-//      val recommendMoviesWithTitle = recomResult.map(rating =>(movieTitles(rating.product), rating.rating))
-//      println(recommendMoviesWithTitle.mkString("\n"))
-//
-//      val predictResultOfTestSet = recomModel.predict(testSetOfRatingData.map{
-//        case Rating(user, product, rating) => (user, product)
-//      })
-//
-//      val formatResultOfTestSet = testSetOfRatingData.map{
-//        case Rating(user, product, rating) => ((user, product), rating)
-//      }
-//
-//      val formatResultOfPredictionResult = predictResultOfTestSet.map {
-//        case Rating(user, product, rating) => ((user, product), rating)
-//      }
-//
-//      val finalResultForComparison = formatResultOfPredictionResult.join(formatResultOfTestSet)
-//
-//      val MAE = finalResultForComparison.map {
-//        case ((user, product), (ratingOfTest, ratingOfPrediction)) =>
-//          val error = (ratingOfTest - ratingOfPrediction)
-//          Math.abs(error)
-//      }.mean()
-//
-//      println(s"mean error: $MAE")
       spark.stop()
     }
 

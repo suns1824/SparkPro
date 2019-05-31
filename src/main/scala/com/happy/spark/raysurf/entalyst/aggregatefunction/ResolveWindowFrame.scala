@@ -19,7 +19,8 @@ class ResolveWindowFrame extends Rule[LogicalPlan]{
   }
 
   protected def failAnalysis(msg: String): Nothing = {
-    throw new AnalysisException(msg)
+    //throw new AnalysisException(msg)
+    throw new Exception(msg)
   }
 }
 
