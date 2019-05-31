@@ -47,7 +47,7 @@ object Movierec {
 
       // training model
       val recomModel = new ALS().setRank(20).setIterations(10).run(trainingSetOfRatingsData)
-
+      //取最高的十位打印出来
       val recomResult = recomModel.recommendProducts(10, 10)
       println(s"Recommend Movie to User ID 10")
       println(recomResult.mkString("\n"))
