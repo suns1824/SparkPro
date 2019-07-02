@@ -1,10 +1,6 @@
 package com.happy.spark.kafka;
 
-import kafka.consumer.Consumer;
-import kafka.consumer.ConsumerConfig;
-import kafka.consumer.ConsumerIterator;
-import kafka.consumer.KafkaStream;
-import kafka.javaapi.consumer.ConsumerConnector;
+import org.apache.kafka.clients.consumer.Consumer;
 
 import java.util.HashMap;
 import java.util.List;
